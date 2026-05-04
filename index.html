@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Lê Hoàng Nam - Gaming Profile</title>
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --glow: 0 0 20px var(--primary);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #000 url('https://i.ibb.co/whLm96NV/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 380px;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--glow);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+            border-radius: 50%;
+            z-index: 1;
+            animation: rotateGlow 3s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .bio-text {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.05);
+        }
+
+        .music-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        audio {
+            width: 100%;
+            height: 30px;
+            filter: invert(1);
+            margin-top: 10px;
+        }
+
+        .scrolling-text {
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .scrolling-text p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scrollText 12s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="card">
+        <div class="avatar-wrapper">
+            <div class="avatar-glow"></div>
+            <img src="https://i.ibb.co/Z6b5Pk6h/avt.jpg" alt="Admin Nam" class="avatar-img">
+        </div>
+
+        <h1>Admin Lê Hoàng Nam</h1>
+        <div class="bio-text">
+            🎯 <b>TRÙM CONFIG - HỖ TRỢ KÉO TÂM</b> 🎯<br>
+            Cung cấp DPI Config FF & Mod FF Siêu Mượt<br>
+            Làm việc tận tâm - Chốt đơn uy tín!
+        </div>
+
+        <div class="links">
+            <a href="https://www.facebook.com/share/1AVy5YknoB/" class="btn" target="_blank">🌐 Facebook Cá Nhân</a>
+            <a href="https://m.me/j/AbaN07D8wQV4sLNQ/" class="btn" target="_blank">💬 Box Messenger</a>
+            <a href="https://zalo.me/0373960765" class="btn" target="_blank">📞 Zalo: 0373960765</a>
+            <a href="https://discord.gg/4gsmDeAe4" class="btn" target="_blank">🎧 Discord Server</a>
+        </div>
+
+        <div class="music-box">
+            <div class="scrolling-text">
+                <p>🎵 Đang phát: Mưa Đợi Chờ Đêm - TIKER (Gaming Version Remix) 🎵</p>
+            </div>
+            <audio controls loop>
+                <source src="nhac.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#00f2ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "repulse" } }
+            }
+        });
+    </script>
+</body>
+</html>
