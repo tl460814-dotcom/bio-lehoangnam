@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platinum Bio</title>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Nền hiệu ứng */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Avatar xoay */
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-top: 40px;
+    animation: spin 6s linear infinite;
+    border: 3px solid cyan;
+    box-shadow: 0 0 20px cyan;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Tiêu đề */
+h1 {
+    margin-top: 10px;
+    color: cyan;
+    text-shadow: 0 0 15px cyan;
+}
+
+/* Button */
+.link {
+    display: block;
+    margin: 15px auto;
+    padding: 12px;
+    width: 220px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, #00ffff, #0066ff);
+    box-shadow: 0 0 10px cyan;
+    transition: 0.3s;
+}
+
+.link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px cyan;
+}
+
+/* Hiệu ứng click */
+.link:active {
+    transform: scale(0.9);
+}
+
+/* Text nhỏ */
+small {
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- Nhạc nền -->
+<audio autoplay loop>
+    <source src="https://mp3tourl.com/audio/1777852923820-61493131-8f20-4c1d-af29-4e7c7dbfe008.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Avatar -->
+<img class="avatar" src="https://i.ibb.co/Z6b5Pk6h" alt="avatar">
+
+<h1>PLATINUM +</h1>
+
+<!-- Link -->
+<a class="link" href="https://www.facebook.com/share/1Gq2oh9b1J/?mibextid=wwXIfr">📘 Facebook</a>
+<a class="link" href="https://m.me/j/AbaN07D8wQV4sLNQ/?send_source=gc:copy_invite_link_c">💬 Messenger Box</a>
+<a class="link" href="https://discord.gg/4gsmDeAe4">🎮 Discord</a>
+<a class="link" href="https://zalo.me/0373960765">📱 Zalo</a>
+
+<small>© Platinum Gaming Bio</small>
+
+<script>
+// Hiệu ứng hạt rơi gaming
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 100; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3,
+        speed: Math.random() * 2
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "cyan";
+
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y += p.speed;
+
+        if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
