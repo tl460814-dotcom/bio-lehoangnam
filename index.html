@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Lê Hoàng Nam - Gaming Profile</title>
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --glow: 0 0 20px var(--primary);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #000 url('https://i.ibb.co/whLm96NV/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 380px;
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: var(--glow);
+        }
+
+        /* Avatar Aura Gaming */
+        .avatar-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px; /* Bo góc kiểu hiện đại */
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-aura {
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+            border-radius: 25px;
+            z-index: 1;
+            animation: rotateAura 3s linear infinite;
+        }
+
+        @keyframes rotateAura {
+            0% { transform: rotate(0deg); filter: blur(8px); }
+            100% { transform: rotate(360deg); filter: blur(12px); }
+        }
+
+        h1 {
+            font-size: 24px;
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bio-text { font-size: 14px; color: #ddd; margin-bottom: 25px; line-height: 1.5; }
+
+        .btn {
+            display: block;
+            padding: 13px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary);
+            transform: scale(1.05);
+        }
+
+        #snow-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Ẩn trình phát nhạc gốc để giao diện đẹp hơn */
+        audio { display: none; }
+        
+        .status-music {
+            font-size: 11px;
+            color: var(--primary);
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body onclick="playAudio()"> <!-- Chạm vào bất kỳ đâu để bật nhạc -->
+
+    <canvas id="snow-canvas"></canvas>
+
+    <div class="card">
+        <div class="avatar-wrapper">
+            <div class="avatar-aura"></div>
+            <!-- Link ảnh đại diện mới của bạn -->
+            <img src="https://i.ibb.co/Z6b5Pk6h/avt.jpg" alt="Admin Nam" class="avatar-img">
+        </div>
+
+        <h1>Admin Lê Hoàng Nam</h1>
+        <p class="bio-text">
+            🎯 <b>TRÙM CONFIG FF V12</b> 🎯<br>
+            DPI Config hỗ trợ kéo tâm tận tình<br>
+            Bám đầu 100% - Mod FF chuyên nghiệp!
+        </p>
+
+        <div class="links">
+            <a href="https://www.facebook.com/share/1AVy5YknoB/" class="btn" target="_blank">🌐 Facebook</a>
+            <a href="https://m.me/j/AbaN07D8wQV4sLNQ/" class="btn" target="_blank">💬 Messenger</a>
+            <a href="https://zalo.me/0373960765" class="btn" target="_blank">📞 Zalo: 0373960765</a>
+        </div>
+
+        <p class="status-music">🎵 Chạm nhẹ vào màn hình để phát nhạc...</p>
+        
+        <!-- Nhạc lấy từ link video của bạn -->
+        <audio id="myAudio" loop>
+            <source src="https://noisy-azure-ar68lmtmkv.edgeone.app/" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Hàm kích hoạt nhạc
+        function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+            document.querySelector(".status-music").innerHTML = "🎵 Đang phát: Huynh Đệ Tình Nghĩa (Remix)";
+        }
+
+        // Hiệu ứng tuyết rơi Neon
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        for(let i = 0; i < 60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 2 + 1,
+                v: Math.random() * 1.5 + 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00f2ff";
+            ctx.beginPath();
+            for(let p of particles) {
+                ctx.moveTo(p.x, p.y);
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+            }
+            ctx.fill();
+            for(let p of particles) {
+                p.y += p.v;
+                if(p.y > canvas.height) p.y = -10;
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+</html>
